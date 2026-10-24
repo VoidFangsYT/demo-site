@@ -1,0 +1,64 @@
+ background: #3b3524;
+  color: #f0d58c;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+table { width: 100%; border-collapse: collapse; }
+td, th {
+  text-align: left;
+  padding: 12px 6px;
+  border-bottom: 1px solid #45474d;
+  font-size: 14px;
+}
+th { color: #b5bac1; }
+.hidden { display: none; }
+</style>
+</head>
+<body>
+<section class="panel" id="login">
+  <h2>Security Lab</h2>
+  <p>Local educational login demo</p>
+  <div class="notice">
+    Use sample information only. Real passwords are never saved.
+  </div>
+  <form id="demoForm">
+    <input placeholder="Demo username" required>
+    <input type="password"
+      placeholder="Fake test password" required>
+    <button type="submit">Open Demo Dashboard</button>
+  </form>
+  <p id="message"></p>
+</section>
+
+<section class="panel hidden" id="dashboard">
+  <h2>Demo User Dashboard</h2>
+  <p>Sample data — not real accounts</p>
+  <table>
+    <thead>
+      <tr><th>Username</th><th>Password data</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>TestUser01</td><td>DEMO_ONLY_123</td></tr>
+      <tr><td>TestUser02</td><td>EXAMPLE_ONLY_456</td></tr>
+      <tr><td>TestUser03</td><td>NOT_A_REAL_PASSWORD</td></tr>
+    </tbody>
+  </table>
+  <button id="back">Back to Login Demo</button>
+</section>
+
+<script>
+const form = document.getElementById("demoForm");
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  document.getElementById("login").classList.add("hidden");
+  document.getElementById("dashboard").classList.remove("hidden");
+});
+document.getElementById("back").addEventListener("click", function() {
+  document.getElementById("dashboard").classList.add("hidden");
+  document.getElementById("login").classList.remove("hidden");
+  form.reset();
+});
+</script>
+</body>
+</html>
